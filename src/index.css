@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #080D10;
+  --color-bg-secondary: #0C141A;
+  --color-bg-card: #101A22;
+  --color-bg-card-hover: #14222D;
+  --color-border-subtle: #1A2A38;
+  --color-border-strong: #2A4052;
+  --color-neon-lime: #B7FF4A;
+  --color-neon-lime-dim: rgba(183, 255, 74, 0.12);
+  --color-neon-lime-glow: rgba(183, 255, 74, 0.25);
+  --color-text-primary: #F4F7F5;
+  --color-text-secondary: #8E9CA6;
+  --color-text-muted: #5B6B77;
+
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  * {
+    border-color: #1A2A38;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+    background-color: #080D10;
+    color: #F4F7F5;
+  }
+
+  body {
+    background-color: #080D10;
+    color: #F4F7F5;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080D10;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1C2D3B;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B7FF4A;
+  }
+}
+
+/* Background grid effect */
+.bg-grid-pattern {
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(183, 255, 74, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Neon glow utility */
+.neon-glow {
+  box-shadow: 0 0 25px rgba(183, 255, 74, 0.22);
+}
+
+.neon-glow-sm {
+  box-shadow: 0 0 12px rgba(183, 255, 74, 0.16);
+}
+
+.neon-border-glow:hover {
+  border-color: #B7FF4A;
+  box-shadow: 0 0 15px rgba(183, 255, 74, 0.2);
+}
+
+/* Pulse animation for radar status */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(183, 255, 74, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(183, 255, 74, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(183, 255, 74, 0);
+  }
+}
+
+.animate-radar {
+  animation: radar-pulse 2s infinite;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
